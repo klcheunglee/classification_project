@@ -23,4 +23,4 @@ jobs:
         pip install numpy pandas scikit-learn matplotlib seaborn scikit-plot statsmodels  
 
     - name: Run script
-      run: python ./path/to/your/main_inn.py  
+      run: python main_inn.py  
