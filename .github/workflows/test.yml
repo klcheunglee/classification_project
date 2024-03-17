@@ -16,10 +16,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3  # Updated to version 3
+      uses: actions/checkout@v3  # Update to version 3
 
     - name: Set up Python
-      uses: actions/setup-python@v2.3.1  # Reverted to v2.3.1 for compatibility with Node.js 20
+      uses: actions/setup-python@v2.3.2  # Update to the latest version of v2.3.x
       with:
         python-version: ${{ env.PYTHON_VERSION }}
 
