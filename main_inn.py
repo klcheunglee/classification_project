@@ -123,7 +123,7 @@ import scikitplot as skplt
 # In[72]:
 
 
-hotel = pd.read_csv('/content/INNHotelsGroup.csv')
+hotel = pd.read_csv('INNHotelsGroup.csv')
 
 
 # In[73]:
