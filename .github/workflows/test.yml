@@ -1,0 +1,33 @@
+name: Notebook Tests
+
+on:
+  push:
+    branches:
+      - main  
+  pull_request:
+    branches:
+      - main  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8  
+
+    - name: Install dependencies
+      run: |
+        pip install jupyter nbconvert  
+        pip install -U scikit-learn
+        pip install scikit-plot
+        
+    - name: Run tests
+      run: |
+        jupyter nbconvert --execute --inplace Jenny_INNHotels_FullCode.ipynb
+
