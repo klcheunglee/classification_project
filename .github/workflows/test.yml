@@ -1,34 +1,24 @@
-name: Notebook Tests
+name: Notebook Checks
 
 on:
   push:
-    branches:
-      - main  
+    branches: [ main ]
   pull_request:
-    branches:
-      - main  
+    branches: [ main ]
 
 jobs:
-  test:
+  test-notebook:
     runs-on: ubuntu-latest
-    env:
-      PYTHON_VERSION: 3.8
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3  # Update to version 3
-
+    - uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v2.3.2  # Update to the latest version of v2.3.x
+      uses: actions/setup-python@v3
       with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
+        python-version: '3.x'
     - name: Install dependencies
       run: |
-        pip install jupyter nbconvert  
-        pip install -U scikit-learn
-        pip install scikit-plot
-        
-    - name: Run tests
-      run: |
-        jupyter nbconvert --execute --inplace Jenny_INNHotels_FullCode.ipynb
+        python -m pip install --upgrade pip
+        pip install nbconvert papermill
+    - name: Execute Jupyter notebook
+      run: papermill Jenny_INNHotels_FullCode.ipynb output_notebook.ipynb
